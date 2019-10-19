@@ -1,0 +1,92 @@
+body {
+    max-width: calc(800px - (30px * 2));
+    margin: 0 auto;
+}
+
+header {
+    /* position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #c6cbef;
+    width: 100%; */
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row-reverse;
+    /* padding-right: 20px; */
+}
+
+header nav li {
+    display: inline-block;
+    padding: 10px;
+    list-style: none;
+    border: 1px solid white;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.wrapper {
+    border: 1px solid white;
+}
+
+header nav li:hover {
+    border: 1px solid black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.article-list {
+    display: grid;
+    gap: 10px;
+}
+
+.article-list article p {
+    color: #858589;
+}
+
+.article-list article h1 {
+    margin-top: 0;
+}
+
+footer {
+    border-top: 1px solid black;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+        ".github-footer ."
+        ".title-footer .";
+}
+
+.title-footer {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    /* grid-row: 1 2; */
+    /* grid-column: 1 2; */
+}
+
+.github-footer {
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    /* grid-row: 2 3; */
+    /* grid-column: 1 2; */
+}
+
+.description {
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+    /* grid-area: 1 2 / 3 3; */
+}
