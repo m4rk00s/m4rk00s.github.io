@@ -1,0 +1,26 @@
+main section article p strong {
+    background: yellow;
+}
+
+.blog-list ul li {
+    list-style: none;
+}
+
+/* about me */
+
+.quotation {
+    color: grey;
+    font-size: 1.5em;
+    font-style: italic;
+    font-family: 'Domine', serif;
+    padding-left: 1.5em;
+}
+
+.quotation strong {
+    color: black;
+    background: none;
+}
+
+.spotify {
+    text-align: center;
+}
