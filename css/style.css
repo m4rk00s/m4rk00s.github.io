@@ -8,6 +8,42 @@ body {
     background: white;
 }
 
+header {
+    background: #f2eee5;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+}
+
+header h1 {
+    margin: 0;
+    padding: 1em;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+header nav {
+    /* border: 1px solid red; */
+    /* display: grid; */
+    /* grid-template-columns: auto auto; */
+    padding-right: 0;
+}
+
+header nav ul {
+    grid-column: 1 / 2;
+    padding: 0;
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+}
+
+header nav ul li {
+    list-style: none;
+    padding: 10px;
+    /* border: 1px solid black; */
+}
+
+
 /* menghilangkan semua jenis style menyebalkan anchor */
 a {
     text-decoration: none;
@@ -21,38 +57,6 @@ footer p {
     margin: 0;
     padding: 1em;
     text-align: center;
-}
-
-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    border-bottom: 1px solid black;
-    background: #f2eee5;
-}
-
-header h1 {
-    /* border: 1px solid black; */
-    padding-left: 1em;
-}
-
-header nav {
-    /* border: 1px solid red; */
-    display: grid;
-    grid-template-columns: auto auto;
-    padding-right: calc(1em * 2);
-}
-
-header nav ul {
-    grid-column: 2 / 3;
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-header nav ul li {
-    list-style: none;
-    padding: 10px;
-    /* border: 1px solid black; */
 }
 
 main figure {
@@ -99,6 +103,38 @@ main section article ul li {
     }
 
     header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        align-items: center;
+        border-bottom: 1px solid black;
         background: #f2eee5;
+    }
+    
+    header h1 {
+        /* border: 1px solid black; */
+        padding-left: 1em;
+        border-bottom: 0;
+        text-align: left;
+    }
+    
+    header nav {
+        /* border: 1px solid red; */
+        /* display: grid; */
+        /* grid-template-columns: auto auto; */
+        padding-right: calc(1em * 2);
+    }
+    
+    header nav ul {
+        /* grid-column: 2 / 3; */
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    
+    header nav ul li {
+        list-style: none;
+        padding: 10px;
+        /* border: 1px solid black; */
     }
 }
