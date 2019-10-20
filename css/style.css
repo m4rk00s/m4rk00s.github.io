@@ -1,0 +1,104 @@
+body {
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/floor-tile.png");
+}
+
+.container {
+    margin: 10px;
+    border: 1px solid black;
+    background: white;
+}
+
+/* menghilangkan semua jenis style menyebalkan anchor */
+a {
+    text-decoration: none;
+}
+
+footer {
+    background: #f2eee5;
+}
+
+footer p {
+    margin: 0;
+    padding: 1em;
+    text-align: center;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid black;
+    background: #f2eee5;
+}
+
+header h1 {
+    /* border: 1px solid black; */
+    padding-left: 1em;
+}
+
+header nav {
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-right: calc(1em * 2);
+}
+
+header nav ul {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+header nav ul li {
+    list-style: none;
+    padding: 10px;
+    /* border: 1px solid black; */
+}
+
+main figure {
+    margin: 10px;
+    /* border: 1px solid black; */
+}
+
+main section {
+    margin: 16px;
+}
+
+main section span:hover {
+    color: #946d11;
+}
+
+main figure img {
+    width: 100%;
+}
+
+main figure figcaption {
+    font-style: italic;
+    color: grey;
+    padding-left: 1em;
+}
+
+main section article {
+    font-family: 'Merriweather', serif;
+}
+
+main section article p,
+main section article ul li {
+    line-height: 1.5em;
+}
+
+main section article ul li {
+    list-style: none;
+    padding: 0.5em;
+}
+
+@media (min-width: 740px) {
+    .container {
+        width: 720px;
+        margin: 10px auto 10px auto;
+    }
+
+    header {
+        background: #f2eee5;
+    }
+}
