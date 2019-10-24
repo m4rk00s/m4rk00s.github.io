@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/blog.css">
+
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Circle of Life - var vs let vs const</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Circle of Life</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../about.html">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+            <figure>
+                <img src="../img/header.png" alt="">
+                <figcaption>one of the scene in Your Name.</figcaption>
+            </figure>
+
+            <section>
+                <article>
+
+                    <h1>[JavaScript] <code>var</code> vs <code>let</code> vs <code>const</code></h1>
+                    <blockquote>
+                        <p><em>What&#39;s the different anyway?</em></p>
+                    </blockquote>
+                    <p>This week I have a great time to learn JavaScript for the first time.</p>
+                    <p>Well, it&#39;s not quite correct though. First time I know about JavaScript is because <a
+                            href='https://www.youtube.com/user/shiffman'>Daniel Shiffman</a>. He&#39;s an awesome guy
+                        who use p5 to
+                        create an awesome project! Go check them out.</p>
+                    <p>Okay, so I stumble upon to this kind of confusion. In Python, there&#39;s no such thing as
+                        variable declaration
+                        in Python! <sup class='md-footnote'><a href='#dfref-footnote-1'
+                                name='ref-footnote-1'>1</a></sup> But it&#39;s
+                        the only exception though since I think almost all programming languages are have some sort of
+                        mechanism to
+                        declare a variable. In JavaScript, however, there&#39;s some weirdness that I found.</p>
+                    <p>First, before ES6, all programmer use <code>var</code> to declare a variable. So, it&#39;s should
+                        look like
+                        <code>var num = 6</code>. But after ES6, now we can use <code>let</code> and <code>const</code>.
+                        What&#39;s the
+                        different anyway?</p>
+                    <p>If you&#39;re an Indonesian speaker, probably you&#39;ll find <a
+                            href='https://medium.com/coderupa/es6-var-let-const-apa-bedanya-1cd4daaee9f0'>this
+                            article</a> kinda great
+                        to explain all of them. But it&#39;s exhaustive list, we just want the gist of it. So here&#39;s
+                        the table from
+                        the the article.</p>
+                    <p><img src="https://miro.medium.com/max/615/1*sUBeBuOB8pAuMPfw9BQmvA.png"
+                            referrerpolicy="no-referrer" alt="img">
+                    </p>
+                    <p>Let&#39;s dissect for each terms:</p>
+                    <p><strong><em>Redeclare</em></strong>: you can declare as many as you want with <code>var</code>,
+                        but it&#39;s not
+                        the case on the others.</p>
+                    <pre><code class='language-javascript' lang='javascript'>// you can do this with no error whatsoever
+var myName = &#39;Markus&#39;;
+var myName = &#39;Suwignyo&#39;;
+
+// but you can&#39;t do this in let
+let myName = &#39;Markus&#39;;
+let myName = &#39;Suwignyo&#39;; // error!
+
+// and also in const
+const myName = &#39;Markus&#39;;
+const myName = &#39;Suwignyo&#39;; // error!
+                    </code></pre>
+                    <p>So why should I care? Well technically you shouldn&#39;t but think about this way. What&#39;s the
+                        purpose of
+                        redeclaring a variable anyway? </p>
+                    <p>If you can&#39;t find the answer, well welcome to <code>let</code> and <code>const</code>. </p>
+                    <p><strong><em>Hoisting</em></strong>: you can use the variable <strong>before</strong> you declare
+                        it. In
+                        <code>var</code> this is possible, but the others, again, it&#39;s not.</p>
+                    <pre><code class='language-javascript' lang='javascript'>// you can do this with no error whatsoever
+console.log(myName);
+var myName = &#39;Suwignyo&#39;;
+
+// but you can&#39;t do this in let
+console.log(myName2); // error!
+let myName2 = &#39;Suwignyo&#39;;
+
+// and also in const
+console.log(myName3); // error!
+const myName3 = &#39;Suwignyo&#39;; 
+                    </code></pre>
+                    <p>Again, you ask why should I care? Well, isn&#39;t it a bit of weird when you can use something
+                        that doesn&#39;t
+                        exist yet? In JavaScript, here&#39;s what&#39;s going on when you use <code>var</code> variable
+                        before you
+                        declare it.</p>
+                    <pre><code class='language-javascript' lang='javascript'>// each time you code like this
+console.log(myName);
+var myName = &#39;Suwignyo&#39;;
+
+// the truth is, the interpreter change your code into like this
+var myName = undefined;
+console.log(myName);
+var myName = &#39;Suwignyo&#39;;
+                    </code></pre>
+                    <p>This kind of feature is seriously confusing if you work on numerous project. Besides, it&#39;s
+                        not a good
+                        practice as suggested by Daniel Brain. <sup class='md-footnote'><a href='#dfref-footnote-2'
+                                name='ref-footnote-2'>2</a></sup> </p>
+                    <p><strong><em>Block scope</em></strong>: mean your variable is limited for use only on certain
+                        block that contains
+                        it&#39;s declaration. It&#39;s true when you use <code>let</code> and <code>const</code>, but
+                        not
+                        <code>var</code>. Let&#39;s see my code:</p>
+                    <pre><code class='language-javascript' lang='javascript'>// you can do this in var
+for (var i = 0; i &lt; 10; i++) { }
+console.log(i); // will output 10
+
+// but you can&#39;t do this in let
+for (let i = 0; i &lt; 10; i++) { }
+console.log(i); // will output 10
+
+// and const
+for (const i = 0; i &lt; 10; i++) { }
+console.log(i); // will output 10
+                    </code></pre>
+                    <p>The variable <code>i</code> is declared in <code>for</code> block. But whenever you use
+                        <code>var</code> to
+                        declare <code>i</code>, it&#39;s become available inside and outside the block.</p>
+                    <p>How about <code>let</code> and <code>const</code>? Both actually declared <strong>inside</strong>
+                        the block, so
+                        whenever you want to use the variable, you have to use it inside the <code>for</code> block, not
+                        on the outside
+                        of it. </p>
+                    <p>If you have a bull&#39;s eyes, you might notice that <code>let</code> and <code>const</code> have
+                        a different
+                        error message. <code>let</code> is enabling you to reassign the variable more than one, so in
+                        this case,
+                        <code>i</code> will get <code>0</code> up to <code>10</code>. But still, you can&#39;t use it
+                        outside the block.
+                    </p>
+                    <p>That&#39;s quite different with <code>const</code>. <code>const</code> is a abbreviation from
+                        <em>constant</em>
+                        mean that it&#39;s static. Once you declare and initiate it, you can&#39;t reassign it anymore.
+                        So, in this
+                        case, <code>i</code> will hold <code>0</code> and never beyond that.</p>
+                    <p><strong><em>Create global props</em></strong>: this is a special property only for
+                        <code>var</code> and I&#39;ve
+                        explained it before that <code>var</code> can be redeclare and reassign multiple time, and can
+                        be used globally
+                        (no matter the scope is).</p>
+                    <h2>Conclusion</h2>
+                    <p>So that&#39;s it! Which one did you prefer? Should I use <code>var</code>, <code>let</code>, or
+                        <code>const</code>? For me personally: I&#39;ll never use <code>var</code> again. The only
+                        reason for this is
+                        because you can use <code>var</code> globally no matter the scope is. And it&#39;s really really
+                        bad.</p>
+                    <p>I use Python almost two years, and the way they handle variable is to make it <em>locally
+                            available</em>.
+                        There&#39;s no such thing as global variable in Python. So that&#39;s why when I use JavaScript
+                        for the first
+                        time, I have this some sort of leaning towards <code>let</code> and <code>const</code> because
+                        it&#39;s more
+                        maintainable. </p>
+                    <p>For now, I use <code>let</code> constantly to replace <code>var</code>. Special case when I need
+                        a constant value
+                        that shouldn&#39;t change at all, then I&#39;ll use <code>const</code>. All and all, please
+                        avoid
+                        <code>var</code>!</p>
+                    <p>&nbsp;</p>
+
+
+                    <div class='footnotes-area'>
+                        <hr />
+                        <h2>Reference</h2>
+                        <div class='footnote-line'><span class='md-fn-count'>1</span> <a
+                                href='https://www.python-course.eu/variables.php' target='_blank'
+                                class='url'>https://www.python-course.eu/variables.php</a><a name='dfref-footnote-1'
+                                href='#ref-footnote-1' title='back to document' class='reversefootnote'>↩</a></div>
+                        <div class='footnote-line'><span class='md-fn-count'>2</span> <a
+                                href='https://medium.com/@bluepnume/theres-no-need-to-define-all-javascript-vars-once-at-the-top-of-a-function-and-there-hasn-t-been-a66b31f21822'
+                                target='_blank'
+                                class='url'>https://medium.com/@bluepnume/theres-no-need-to-define-all-javascript-vars-once-at-the-top-of-a-function-and-there-hasn-t-been-a66b31f21822</a><a
+                                name='dfref-footnote-2' href='#ref-footnote-2' title='back to document'
+                                class='reversefootnote'>↩</a>
+                        </div>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+        </main>
+
+        <footer>
+
+            <p>Thank you</p>
+
+        </footer>
+
+
+    </div>
+
+</body>
+
+</html>
